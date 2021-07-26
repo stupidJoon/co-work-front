@@ -8,6 +8,10 @@ const SignInForm = () => {
       console.log(values);
       const result = await fetch('https://19a4554af76c.ngrok.io/login', {
         method: 'POST',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json'
+        },
         body: JSON.stringify(values)
       }).then((response) => response.json());
       console.log(result);
