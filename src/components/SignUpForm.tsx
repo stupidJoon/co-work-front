@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button, FloatingLabel } from 'react-bootstrap';
 import useForm from '../hooks/useForm';
 
 const SignUpForm = () => {
@@ -8,33 +8,61 @@ const SignUpForm = () => {
     { id: '', name: '', password: '' },
     async () => {
       console.log(values);
-      await fetch('https://90098acc55ab.ngrok.io/register', {
+      await fetch('https://4c002eb24393.ngrok.io/register', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
         },
-        body: JSON.stringify(values)
+        body: JSON.stringify(values),
       }).then((response) => response.json());
       router.push('/signin');
-    }
+    },
   );
 
   return (
-    <Form onSubmit={onSubmit}>
-      <Form.Group className="mb-3">
-        <Form.Label>ID</Form.Label>
-        <Form.Control type="text" name="id" placeholder="id를 입력하세요" value={values.id} onChange={onChange} />
-      </Form.Group>
-      <Form.Group className="mb-3">
-        <Form.Label>name</Form.Label>
-        <Form.Control type="text" name="name" placeholder="name을 입력하세요" value={values.name} onChange={onChange} />
-      </Form.Group>
-      <Form.Group className="mb-3">
-        <Form.Label>Password</Form.Label>
-        <Form.Control type="password" name="password" placeholder="password를 입력하세요" value={values.password} onChange={onChange} />
-      </Form.Group>
-      <Button variant="primary" type="submit">회원가입</Button>
-    </Form>
+    <>
+      <h1>회원가입</h1>
+      <Form onSubmit={onSubmit}>
+        <Form.Group className="my-3">
+          <FloatingLabel label="ID">
+            <Form.Control
+              type="text"
+              name="id"
+              placeholder="id"
+              value={values.id}
+              onChange={onChange}
+            />
+          </FloatingLabel>
+        </Form.Group>
+        <Form.Group className="mb-3">
+          <FloatingLabel label="name">
+            <Form.Control
+              type="text"
+              name="name"
+              placeholder="name"
+              value={values.name}
+              onChange={onChange}
+            />
+          </FloatingLabel>
+        </Form.Group>
+        <Form.Group className="mb-3">
+          <FloatingLabel label="password">
+            <Form.Control
+              type="password"
+              name="password"
+              placeholder="password"
+              value={values.password}
+              onChange={onChange}
+            />
+          </FloatingLabel>
+        </Form.Group>
+        <div className="d-grid gap-2">
+          <Button variant="primary" type="submit" size="lg">
+            로그인
+          </Button>
+        </div>
+      </Form>
+    </>
   );
 };
 

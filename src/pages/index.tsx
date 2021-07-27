@@ -29,7 +29,7 @@ const Index = () => {
   const router = useRouter();
   useEffect(() => {
     const checkLogin = async () => {
-      const result = await fetch('https://90098acc55ab.ngrok.io/logincheck', {
+      const result = await fetch('https://4c002eb24393.ngrok.io/logincheck', {
         credentials: 'include'
       }).then((response) => response.json());
       console.log(result);
@@ -41,7 +41,7 @@ const Index = () => {
   }, []);
 
   const onSignOut = async () => {
-    await fetch('https://90098acc55ab.ngrok.io/logout', {
+    await fetch('https://4c002eb24393.ngrok.io/logout', {
       credentials: 'include'
     });
     router.reload();

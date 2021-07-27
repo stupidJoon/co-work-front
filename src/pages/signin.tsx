@@ -1,11 +1,14 @@
-import { Container } from "react-bootstrap"
+import { Col, Container, Row } from "react-bootstrap"
 import SignInForm from "../components/SignInForm";
 
 const SignIn = () => {
   return (
-    <Container>
-      <h1>로그인</h1>
-      <SignInForm />
+    <Container fluid>
+      <Row className="vh-100 justify-content-center align-items-center bg-light">
+        <Col xs={6}>
+          <SignInForm />
+        </Col>
+      </Row>
     </Container>
   );
 };

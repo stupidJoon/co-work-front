@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import { useState } from 'react';
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button, FloatingLabel } from 'react-bootstrap';
 import useForm from '../hooks/useForm';
 
 const SignInForm = () => {
@@ -10,7 +10,7 @@ const SignInForm = () => {
     { id: '', password: '' },
     async () => {
       console.log(values);
-      const result = await fetch('https://90098acc55ab.ngrok.io/login', {
+      const result = await fetch('https://4c002eb24393.ngrok.io/login', {
         method: 'POST',
         credentials: 'include',
         headers: {
@@ -29,31 +29,36 @@ const SignInForm = () => {
 
   return (
     <>
+      <h1>로그인</h1>
       <p className="text-danger">{msg}</p>
       <Form onSubmit={onSubmit}>
-        <Form.Group className="mb-3">
-          <Form.Label>ID</Form.Label>
-          <Form.Control
-            type="text"
-            name="id"
-            placeholder="id를 입력하세요"
-            value={values.id}
-            onChange={onChange}
-          />
+        <Form.Group className="my-3">
+          <FloatingLabel label="ID">
+            <Form.Control
+              type="text"
+              name="id"
+              placeholder="ID"
+              value={values.id}
+              onChange={onChange}
+            />
+          </FloatingLabel>
         </Form.Group>
         <Form.Group className="mb-3">
-          <Form.Label>Password</Form.Label>
-          <Form.Control
-            type="password"
-            name="password"
-            placeholder="password를 입력하세요"
-            value={values.password}
-            onChange={onChange}
-          />
+          <FloatingLabel label="password">
+            <Form.Control
+              type="password"
+              name="password"
+              placeholder="password"
+              value={values.password}
+              onChange={onChange}
+            />
+          </FloatingLabel>
         </Form.Group>
-        <Button variant="primary" type="submit">
-          로그인
-        </Button>
+        <div className="d-grid gap-2">
+          <Button variant="primary" type="submit" size="lg">
+            로그인
+          </Button>
+        </div>
       </Form>
     </>
   );
