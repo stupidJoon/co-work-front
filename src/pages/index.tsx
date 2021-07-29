@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { useEffect, useState } from "react";
 import { useRouter } from 'next/router';
 import { Button } from 'react-bootstrap';
+import { baseURL } from '../config';
 
 // const Index = () => {
 //   return (
@@ -29,7 +30,7 @@ const Index = () => {
   const router = useRouter();
   useEffect(() => {
     const checkLogin = async () => {
-      const result = await fetch('https://4c002eb24393.ngrok.io/logincheck', {
+      const result = await fetch(`${baseURL}/logincheck`, {
         credentials: 'include'
       }).then((response) => response.json());
       console.log(result);
@@ -41,7 +42,7 @@ const Index = () => {
   }, []);
 
   const onSignOut = async () => {
-    await fetch('https://4c002eb24393.ngrok.io/logout', {
+    await fetch(`${baseURL}/logout`, {
       credentials: 'include'
     });
     router.reload();

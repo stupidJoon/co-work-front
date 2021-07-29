@@ -2,6 +2,7 @@ import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { Form, Button, FloatingLabel } from 'react-bootstrap';
 import useForm from '../hooks/useForm';
+import { baseURL } from '../config';
 
 const SignInForm = () => {
   const router = useRouter();
@@ -10,7 +11,7 @@ const SignInForm = () => {
     { id: '', password: '' },
     async () => {
       console.log(values);
-      const result = await fetch('https://4c002eb24393.ngrok.io/login', {
+      const result = await fetch(`${baseURL}/login`, {
         method: 'POST',
         credentials: 'include',
         headers: {

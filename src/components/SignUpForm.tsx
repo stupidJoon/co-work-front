@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router';
 import { Form, Button, FloatingLabel } from 'react-bootstrap';
+import { baseURL } from '../config';
 import useForm from '../hooks/useForm';
 
 const SignUpForm = () => {
@@ -8,7 +9,7 @@ const SignUpForm = () => {
     { id: '', name: '', password: '' },
     async () => {
       console.log(values);
-      await fetch('https://4c002eb24393.ngrok.io/register', {
+      await fetch(`${baseURL}/register`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
